@@ -43,7 +43,7 @@ public class RingtoneHelper {
         RingtoneManager mgr = new RingtoneManager(context);
         Random r = new Random(System.currentTimeMillis());
 
-        int n = r.nextInt(mgr.getCursor().getCount());
+        int n = mgr.getCursor().getCount();
         List<Uri> ringtones = new ArrayList<>();
         for(int i=0;i<n;i++){
             if(mgr.getRingtoneUri(i).toString().contains("external")) {
@@ -51,7 +51,9 @@ public class RingtoneHelper {
             }
 //            Log.d("Files", "Path: " + mgr.getRingtoneUri(i));
         }
+        int ring = r.nextInt(ringtones.size());
+        Log.d("URI: " , ringtones.get(ring).toString());
 
-        RingtoneManager.setActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE, ringtones.get(n));
+        RingtoneManager.setActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE, ringtones.get(ring));
     }
 }

@@ -13,6 +13,7 @@ import android.util.Log;
 public class RingReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.d("RingReceiver", intent.getAction());
         if(intent.getAction().equals(TelephonyManager.ACTION_PHONE_STATE_CHANGED)){
             String cs = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
             Log.d("RingTone", "change");
